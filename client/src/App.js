@@ -1,5 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
+import Doctor from "./Doctor";
+import Patient from "./Patient";
+import Home from "./Home";
 
 function App() {
   return (
