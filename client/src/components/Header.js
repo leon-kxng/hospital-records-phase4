@@ -1,0 +1,12 @@
+function Header() {
+    return (
+      <header>
+        <h1>
+          <Link to="/">Hospital unit</Link>
+        </h1>
+      </header>
+    );
+  }
+  
+  export default Header;
+  
