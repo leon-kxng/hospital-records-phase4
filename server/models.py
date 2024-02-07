@@ -2,6 +2,12 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import validates
 db = SQLAlchemy()
 
+doctor_patients = db.Table( 
+     'doctor_patients',
+     db.Column ('doctors_id', db.Integer,db.ForeignKey('doctors.id'),primary_key=True),
+     db.Column ('patients_id', db.Integer,db.ForeignKey('patients.id'),primary_key=True)
+)
+
 class Doctor(db.Model):
     __tablename__ ='doctors'
 
@@ -11,12 +17,13 @@ class Doctor(db.Model):
     speciality = db.Column(db.String)
     
     hospital_ = db.relationship('Hospital', backref ='doctor')
+    patients=db.relationship('Patient',secondary=doctor_patients,back_populates='doctors')
 
     
     def __repr__(self): 
         return f'<hero {self.name} , {self.speciality}>'   
   
-class patient(db.Model):
+class Patient(db.Model):
       __tablename__='patients'
 
 
@@ -26,6 +33,8 @@ class patient(db.Model):
       illness = db.Column(db.String)
     
       hospital_ =db.relationship('Hospital', backref ='patient')
+      doctors=db.relationship('Doctor',secondary=doctor_patients,back_populates='patients')
+
          
       def __repr__(self) :
            return f' <Power {self.name},{self.illness}>'
