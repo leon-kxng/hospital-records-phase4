@@ -5,7 +5,6 @@ import { Link, useParams } from "react-router-dom";
 function Home(){
     const [doctors, setDoctors] = useState([]);
 
-
     useEffect(() => {
         fetch("/doctors")
           .then((r) => r.json())
