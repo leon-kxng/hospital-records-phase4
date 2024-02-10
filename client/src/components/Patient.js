@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const Patient = ( ) => {
     const [patients, setPatients] = useState([])
-
+    
     useEffect(() => {
         fetch('/patients')
         .then(response => response.json())
