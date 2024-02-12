@@ -1,20 +1,30 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import fetchData from "./fetchData";
 
-const Patient = ( ) => {
-    const [patients, setPatients] = useState([])
-    
+const Patient = () => {
+    const [patients, setPatients] = useState([]);
+
     useEffect(() => {
-        fetch('/patients')
-        .then(response => response.json())
-        .then(patientsData => setPatients(patientsData))
-    }, [])
+        fetchData('patient')
+            .then(data => setPatients(data))
+            .catch(error => console.error('Error fetching patients:', error));
+    }, []);
 
-    const patientList = patients.map(Patient= (<PatientData key={patient.id} patientInfo ={patient}/>))
-    return(
+    return (
         <div>
-            { patientList}
+            <h2>All Patients</h2>
+            <ul>
+                {patients.map(patient => (
+                    <li key={patient.id}>
+                        <p>Name: {patient.name}</p>
+                        <p>Age: {patient.age}</p>
+                        <p>Illness: {patient.illness}</p>
+                        <p>Doctor: {patient.doctorName}</p>
+                    </li>
+                ))}
+            </ul>
         </div>
-    )
-}
+    );
+};
 
 export default Patient;
