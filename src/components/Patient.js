@@ -17,7 +17,7 @@ const Patient = () => {
     const addPatient = () => {
         if (newPatientName && newPatientAge && newPatientIllness && newPatientDoctorName) {
             const newPatient = {
-                id: patients.length + 1, // Generate a unique ID (assuming IDs are incremental)
+                id: patients.length + 1, 
                 name: newPatientName,
                 age: newPatientAge,
                 illness: newPatientIllness,
