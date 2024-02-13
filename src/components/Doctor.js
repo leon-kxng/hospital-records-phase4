@@ -15,7 +15,7 @@ function Home() {
     const addDoctor = () => {
         if (newDoctorName && newDoctorSpeciality) {
             const newDoctor = {
-                id: doctors.length + 1, // Generate a unique ID (assuming IDs are incremental)
+                id: doctors.length + 1, 
                 name: newDoctorName,
                 speciality: newDoctorSpeciality
             };
